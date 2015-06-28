@@ -1,0 +1,53 @@
+{
+  "name": "Mic.js",
+  "version": "0.1.0",
+  "description": "Design By Contract for Javascript",
+  "licenses": [
+    {
+      "type": "MIT license",
+      "url": "https://bitbucket.org/65c02/mic_js"
+    }
+  ],
+  "author": "65c02",
+  "contributors": [],
+  "private": true,
+  "preferGlobal": false,
+  "main": "js/src/Mic.js",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/65c02/mic_js"
+  },
+  "bugs": {
+    "url": "https://bitbucket.org/65c02/mic_js/issues"
+  },
+  "publishConfig": {},
+  "keywords": [
+    "design by contract",
+    "dbc"
+  ],
+  "scripts": {
+    "postinstall": "bower install"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-banner": "^0.4.0",
+    "grunt-contrib-yuidoc": "~0.8.0",
+    "grunt-karma": "^0.10.1",
+    "grunt-sync-json": "^0.4.0",
+    "jasmine-core": "*",
+    "karma": "~0.12.31",
+    "karma-chrome-launcher": "0.1.8 || >0.1.12",
+    "karma-coverage": "~0.2.7",
+    "karma-firefox-launcher": "~0.1.3",
+    "karma-html-reporter": "~0.2.3",
+    "karma-ie-launcher": "~0.1.5",
+    "karma-jasmine": "~0.3.5",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-phantomjs-shim": "~1.0.0",
+    "karma-requirejs": "^0.2.2",
+    "load-grunt-tasks": "^3.1.0",
+    "node-static": "~0.7.4",
+    "requirejs": "~2.1"
+  }
+}
