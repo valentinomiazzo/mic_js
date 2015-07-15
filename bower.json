@@ -1,7 +1,7 @@
 {
     "name": "Mic.js",
     "description": "Design By Contract for Javascript",
-    "version": "0.1.0",
+    "version": "0.0.0",
     "authors": "65c02",
     "main": "js/src/Mic.js",
     "private": true,
@@ -11,11 +11,11 @@
             "url": "https://bitbucket.org/65c02/mic_js"
         }
     ],
-    "dependencies": {},
-    "devDependencies": {
+    "dependencies": {
         "in_js": "git+https://github.com/valentinomiazzo/in_js.git",
         "mxr_js": "git+https://github.com/valentinomiazzo/mxr_js.git"
     },
+    "devDependencies": {},
     "ignore": [
         "/*.*",
         "/js/spec/",
