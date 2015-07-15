@@ -2,12 +2,36 @@
     "project": {
         "name": "Mic.js",
         "description": "Design By Contract for Javascript",
-        "version": "0.1.0",
+        "version": "0.0.0",
         "url": ""
     },
-    "files": {},
+    "files": {
+        "js\\src\\Mic.js": {
+            "name": "js\\src\\Mic.js",
+            "modules": {},
+            "classes": {
+                "Mic": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
     "modules": {},
-    "classes": {},
+    "classes": {
+        "Mic": {
+            "name": "Mic",
+            "shortname": "Mic",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "js\\src\\Mic.js",
+            "line": 19,
+            "description": "This is the collection of static methods exposed by Mic.js",
+            "static": 1
+        }
+    },
     "classitems": [],
     "warnings": []
 }
