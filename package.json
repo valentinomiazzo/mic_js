@@ -23,10 +23,17 @@
   "publishConfig": {},
   "keywords": [
     "design by contract",
-    "dbc"
+    "dbc",
+    "mix-in",
+    "mixin",
+    "inheritance"
   ],
   "scripts": {
     "postinstall": "bower install"
+  },
+  "engines" : {
+    "node" : ">=0.10.31",
+    "npm" : ">=2.8.3"
   },
   "dependencies": {},
   "devDependencies": {
