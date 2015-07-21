@@ -1,5 +1,15 @@
-/*jslint browser: true, bitwise: true, nomen: true, todo: true, vars: true, plusplus: true, indent: 4 */
-/*global define */
+/*!                                        
+*  Mic.js 0.0.0      
+*                                          
+*  (c) 65c02                   
+*                                          
+*  MIT license             
+*                                          
+*  https://bitbucket.org/65c02/mic_js               
+*/                                         
+
+/*jshint browser: true, bitwise: true, nomen: true, plusplus: true, indent: 4, expr: false, -W030 */
+/*global define*/
 
 define([
     "module", "Mxr", "In"
@@ -15,7 +25,6 @@ define([
         }
     }
 
-
     /**
     This is the collection of static methods exposed by Mic.js
 
@@ -23,18 +32,54 @@ define([
     @static
     */
     var Mic = {};
-    module.config.In = In; //we force In.js mixing
-    Mxr.configure(module.config); //we mix In.js before using it
-    _s_copy(Mic, Mxr); //we mix Mxr.js and In.js in Mic.js
+    module.config.In = In;          //we force In.js mixing
+    Mxr.configure(module.config);   //we mix In.js before using it
+    _s_copy(Mic, Mxr);              //we mix Mxr.js and In.js in Mic.js
 
+    /**
+    Configures the library.
+    It expects a JSON like the following:
+
+        {
+            "assert" : callback,
+            "disableContractChecks": boolean
+        }
+
+    It is called at load time by require.js passing as `config` the config of the module.
+    Anyway, you can call it again anytime.
+
+    Fields description:
+
+    `assert`:
+    Optional. The signature is `void assert(boolean, String)`.
+    If you pass `null` then assertions are disabled.
+    If you pass `undefined` then the default implementation is used.
+
+    `disableContractChecks`:
+    Optional. If true then pre and post conditions are not injected and therefore checked.
+    This is useful when the code is ready for production and speed matters.
+
+    @method configure
+    @static
+    @param config {Object} the configuration object
+    */
     //We replace the configure copied from Mxr with our own.
     Mic.configure = function (config) {
+        Mic.assert && Mic.assert(config !== null, "config is null");
+
         if (config.assert) {
             Mic.assert && Mic.assert(typeof config.assert === "function", "assert is not a function");
             Mic.assert = config.assert;
+        } else if (config.assert === null) {
+            Mic.assert = null;
         } else {
             Mic.assert = _defaultAssert;
         }
+
+        if (config.disableContractChecks) {
+            Mic._DISABLE_CONTRACTS_CHECKS = true;
+        }
+
         Mxr.configure(config);
     };
 
@@ -45,6 +90,7 @@ define([
     Mic._COUNTERVARIANCE_VIOLATION_MSG = "countervariance violated";
     Mic._PRE = "pre";
     Mic._POST = "post";
+    Mic._DISABLE_CONTRACTS_CHECKS = false;
 
     var _defaultAssert = function(trueish, message) {
         if (!trueish) {
@@ -53,18 +99,58 @@ define([
         }
     };
 
+    /**
+    If `trueish` is not true then it throws an Error.
+
+    @method assert
+    @static
+    @param trueish {boolean} the predicate
+    @param [message] {String} the message to pass in the Error
+    */
     Mic.assert = _defaultAssert;
 
-    //Declares you not use variable and shuts up Jslint & Co.
+    /**
+    Declares you don't use variable and shuts up Jslint & Co.
+
+        function f(x, y) {
+            Mic.unused(x & y);
+        }
+
+    @method unused
+    @static
+    @param x {anything} a variable
+    */
     Mic.unused = function (x) { x = x && 0; };
 
-    //Declares a block is empty by purpose
+    /**
+    Declares a block is empty by purpose and shuts up Jslint & Co.
+
+        {
+            Mic.empty();
+        }
+
+    @method empty
+    @static
+    */
     Mic.empty = function() { Mic.unused(0); };
 
+    /**
+    Seals the contract of `clazz`.
+    Must be called after all the methods, pre-conditions, post-conditions, mixins and inheritance have been declared.
+    @method seal
+    @static
+    @param clazz {Function} the class with contract.
+    */
     Mic.seal = function (clazz) {
         Mic._seal(clazz, false);
     };
 
+    /**
+    Like `seal` but it doesn't throw an Error if the class contains abstract methods.
+    @method sealAbstract
+    @static
+    @param clazz {Function} the class with contract.
+    */
     Mic.sealAbstract = function (clazz) {
         Mic._seal(clazz, true);
     };
@@ -78,19 +164,21 @@ define([
         var member;
         var synth;
         var conditions;
-        for (memberName in cp) {
-            if (cp.hasOwnProperty(memberName)) {
-                member = cp[memberName];
-                if (member instanceof Function) {
-                    if (!Mic.isAbstract(member)) {
-                        conditions = Mic._findConditions(cp, memberName);
-                        synth = Mic._synthetize(member, conditions);
-                        cp[memberName] = synth;
-                    } else {
-                        Mic.assert(
-                            isAbstractClass,
-                            "Found an abstract method on a not abstract class. Class " + clazz.name + " Method " + memberName
-                        );
+        if (!Mic._DISABLE_CONTRACTS_CHECKS) {
+            for (memberName in cp) {
+                if (cp.hasOwnProperty(memberName)) {
+                    member = cp[memberName];
+                    if (member instanceof Function) {
+                        if (!Mic.isAbstract(member)) {
+                            conditions = Mic._findConditions(cp, memberName);
+                            synth = Mic._synthetize(member, conditions);
+                            cp[memberName] = synth;
+                        } else {
+                            Mic.assert(
+                                isAbstractClass,
+                                "Found an abstract method on a not abstract class. Class " + clazz.name + " Method " + memberName
+                            );
+                        }
                     }
                 }
             }
@@ -98,6 +186,12 @@ define([
         cp[Mic._IS_SEALED] = true;
     };
 
+    /**
+    Return true if `seal` or `sealAbstract` have been invoked on `clazz`.
+    @method isSealed
+    @static
+    @param clazz {Function} the class to check.
+    */
     Mic.isSealed = function (clazz) {
         Mic.assert(clazz);
         Mic.assert(clazz instanceof Function);
@@ -228,7 +322,7 @@ define([
             //After the first preconditions failed some started to pass
             //Covariance violated
             throw new Error(Mic._COVARIANCE_VIOLATION__MSG);
-            //TODO: implement a custom excpetion with a cause and pass exception as cause
+            //TODO: implement a custom exception with a cause and pass exception as cause
         }
     };
 
@@ -294,7 +388,7 @@ define([
             Mic.assert(fp);
             Mic.assert(exception);
             throw new Error(Mic._COUNTERVARIANCE_VIOLATION_MSG);
-            //TODO: implement a custom excpetion with a cause and pass exception as cause
+            //TODO: implement a custom exception with a cause and pass exception as cause
         }
     };
 

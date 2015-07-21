@@ -27,11 +27,123 @@
             "plugin_for": [],
             "extension_for": [],
             "file": "js\\src\\Mic.js",
-            "line": 19,
+            "line": 28,
             "description": "This is the collection of static methods exposed by Mic.js",
             "static": 1
         }
     },
-    "classitems": [],
+    "classitems": [
+        {
+            "file": "js\\src\\Mic.js",
+            "line": 39,
+            "description": "Configures the library.\nIt expects a JSON like the following:\n\n    {\n        \"assert\" : callback,\n        \"disableContractChecks\": boolean\n    }\n\nIt is called at load time by require.js passing as `config` the config of the module.\nAnyway, you can call it again anytime.\n\nFields description:\n\n`assert`:\nOptional. The signature is `void assert(boolean, String)`.\nIf you pass `null` then assertions are disabled.\nIf you pass `undefined` then the default implementation is used.\n\n`disableContractChecks`:\nOptional. If true then pre and post conditions are not injected and therefore checked.\nThis is useful when the code is ready for production and speed matters.",
+            "itemtype": "method",
+            "name": "configure",
+            "static": 1,
+            "params": [
+                {
+                    "name": "config",
+                    "description": "the configuration object",
+                    "type": "Object"
+                }
+            ],
+            "class": "Mic"
+        },
+        {
+            "file": "js\\src\\Mic.js",
+            "line": 102,
+            "description": "If `trueish` is not true then it throws an Error.",
+            "itemtype": "method",
+            "name": "assert",
+            "static": 1,
+            "params": [
+                {
+                    "name": "trueish",
+                    "description": "the predicate",
+                    "type": "Boolean"
+                },
+                {
+                    "name": "message",
+                    "description": "the message to pass in the Error",
+                    "type": "String",
+                    "optional": true
+                }
+            ],
+            "class": "Mic"
+        },
+        {
+            "file": "js\\src\\Mic.js",
+            "line": 112,
+            "description": "Declares you don't use variable and shuts up Jslint & Co.\n\n    function f(x, y) {\n        Mic.unused(x & y);\n    }",
+            "itemtype": "method",
+            "name": "unused",
+            "static": 1,
+            "params": [
+                {
+                    "name": "x",
+                    "description": "a variable",
+                    "type": "Anything"
+                }
+            ],
+            "class": "Mic"
+        },
+        {
+            "file": "js\\src\\Mic.js",
+            "line": 125,
+            "description": "Declares a block is empty by purpose and shuts up Jslint & Co.\n\n    {\n        Mic.empty();\n    }",
+            "itemtype": "method",
+            "name": "empty",
+            "static": 1,
+            "class": "Mic"
+        },
+        {
+            "file": "js\\src\\Mic.js",
+            "line": 137,
+            "description": "Seals the contract of `clazz`.\nMust be called after all the methods, pre-conditions, post-conditions, mixins and inheritance have been declared.",
+            "itemtype": "method",
+            "name": "seal",
+            "static": 1,
+            "params": [
+                {
+                    "name": "clazz",
+                    "description": "the class with contract.",
+                    "type": "Function"
+                }
+            ],
+            "class": "Mic"
+        },
+        {
+            "file": "js\\src\\Mic.js",
+            "line": 148,
+            "description": "Like `seal` but it doesn't throw an Error if the class contains abstract methods.",
+            "itemtype": "method",
+            "name": "sealAbstract",
+            "static": 1,
+            "params": [
+                {
+                    "name": "clazz",
+                    "description": "the class with contract.",
+                    "type": "Function"
+                }
+            ],
+            "class": "Mic"
+        },
+        {
+            "file": "js\\src\\Mic.js",
+            "line": 189,
+            "description": "Return true if `seal` or `sealAbstract` have been invoked on `clazz`.",
+            "itemtype": "method",
+            "name": "isSealed",
+            "static": 1,
+            "params": [
+                {
+                    "name": "clazz",
+                    "description": "the class to check.",
+                    "type": "Function"
+                }
+            ],
+            "class": "Mic"
+        }
+    ],
     "warnings": []
 }

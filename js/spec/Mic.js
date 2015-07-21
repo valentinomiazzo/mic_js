@@ -1,4 +1,14 @@
-/*jslint browser: true, bitwise: true, nomen: true, todo: true, vars: true, plusplus: true, indent: 4 */
+/*!                                        
+*  Mic.js 0.0.0      
+*                                          
+*  (c) 65c02                   
+*                                          
+*  MIT license             
+*                                          
+*  https://bitbucket.org/65c02/mic_js               
+*/                                         
+
+/*jshint browser: true, bitwise: true, nomen: true, plusplus: true, indent: 4, expr: false, -W030 */
 /*global define, describe, it, expect */
 
 define([
@@ -339,6 +349,46 @@ define([
 
             expect(d.f()).toBe(1);
             expect(d.preCalled).toBe(true);
+        });
+
+        it("allows to disable checks when running in production", function() {
+            Mic.configure({
+                disableContractChecks: true
+            });
+            function Base() {}
+            Base.prototype.f = function () { return 0; };
+            Base.prototype.f.pre = function () {
+                Mic.assert(false); //always raises and exception
+            };
+            Mic.seal(Base);
+            var b = new Base();
+
+            try {
+                expect(b.f()).toBe(0);
+            } finally {
+                Mic.configure({
+                    disableContractChecks: false
+                });
+            }
+        });
+
+        it("allows to redefine the assert function", function() {
+            var invoked;
+            function myAssert(v) {
+                invoked = true;
+            }
+            Mic.configure({
+                assert: myAssert
+            });
+            Mic.assert(true);
+
+            try {
+                expect(invoked).toBe(true);
+            } finally {
+                Mic.configure({
+                    assert: undefined
+                });
+            }
         });
 
         it("assumes pre-post conditions are without sidefx and can be execute multiple times for each call", function() {

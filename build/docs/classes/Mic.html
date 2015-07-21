@@ -80,7 +80,7 @@
 
 
         <div class="foundat">
-            Defined in: <a href="../files/js_src_Mic.js.html#l19"><code>js\src\Mic.js:19</code></a>
+            Defined in: <a href="../files/js_src_Mic.js.html#l28"><code>js\src\Mic.js:28</code></a>
         </div>
 
 
@@ -97,17 +97,463 @@
     <ul class="api-class-tabs">
         <li class="api-class-tab index"><a href="#index">Index</a></li>
 
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
     </ul>
 
     <div>
         <div id="index" class="api-class-tabpanel index">
             <h2 class="off-left">Item Index</h2>
 
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method">
+                                <a href="#method_assert">assert</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_configure">configure</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_empty">empty</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_isSealed">isSealed</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_seal">seal</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_sealAbstract">sealAbstract</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_unused">unused</a>
+
+                                    <span class="flag static">static</span>
+                            </li>
+                    </ul>
+                </div>
 
 
 
         </div>
 
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_assert" class="method item">
+    <h3 class="name"><code>assert</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>trueish</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[message]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_src_Mic.js.html#l102"><code>js\src\Mic.js:102</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>If <code>trueish</code> is not true then it throws an Error.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">trueish</code>
+                        <span class="type">Boolean</span>
+
+
+                    <div class="param-description">
+                        <p>the predicate</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[message]</code>
+                        <span class="type">String</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the message to pass in the Error</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_configure" class="method item">
+    <h3 class="name"><code>configure</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>config</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_src_Mic.js.html#l39"><code>js\src\Mic.js:39</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Configures the library.
+It expects a JSON like the following:</p>
+<pre class="code prettyprint"><code>{
+    &quot;assert&quot; : callback,
+    &quot;disableContractChecks&quot;: boolean
+}
+</code></pre>
+<p>It is called at load time by require.js passing as <code>config</code> the config of the module.
+Anyway, you can call it again anytime.</p>
+<p>Fields description:</p>
+<p><code>assert</code>:
+Optional. The signature is <code>void assert(boolean, String)</code>.
+If you pass <code>null</code> then assertions are disabled.
+If you pass <code>undefined</code> then the default implementation is used.</p>
+<p><code>disableContractChecks</code>:
+Optional. If true then pre and post conditions are not injected and therefore checked.
+This is useful when the code is ready for production and speed matters.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">config</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the configuration object</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_empty" class="method item">
+    <h3 class="name"><code>empty</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_src_Mic.js.html#l125"><code>js\src\Mic.js:125</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Declares a block is empty by purpose and shuts up Jslint &amp; Co.</p>
+<pre class="code prettyprint"><code>{
+    Mic.empty();
+}</code></pre>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_isSealed" class="method item">
+    <h3 class="name"><code>isSealed</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>clazz</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_src_Mic.js.html#l189"><code>js\src\Mic.js:189</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Return true if <code>seal</code> or <code>sealAbstract</code> have been invoked on <code>clazz</code>.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">clazz</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <p>the class to check.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_seal" class="method item">
+    <h3 class="name"><code>seal</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>clazz</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_src_Mic.js.html#l137"><code>js\src\Mic.js:137</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Seals the contract of <code>clazz</code>.
+Must be called after all the methods, pre-conditions, post-conditions, mixins and inheritance have been declared.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">clazz</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <p>the class with contract.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_sealAbstract" class="method item">
+    <h3 class="name"><code>sealAbstract</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>clazz</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_src_Mic.js.html#l148"><code>js\src\Mic.js:148</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Like <code>seal</code> but it doesn't throw an Error if the class contains abstract methods.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">clazz</code>
+                        <span class="type">Function</span>
+
+
+                    <div class="param-description">
+                        <p>the class with contract.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_unused" class="method item">
+    <h3 class="name"><code>unused</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>x</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+        <span class="flag static">static</span>
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/js_src_Mic.js.html#l112"><code>js\src\Mic.js:112</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Declares you don't use variable and shuts up Jslint &amp; Co.</p>
+<pre class="code prettyprint"><code>function f(x, y) {
+    Mic.unused(x &amp; y);
+}</code></pre>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">x</code>
+                        <span class="type">Anything</span>
+
+
+                    <div class="param-description">
+                        <p>a variable</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+            </div>
 
 
 
