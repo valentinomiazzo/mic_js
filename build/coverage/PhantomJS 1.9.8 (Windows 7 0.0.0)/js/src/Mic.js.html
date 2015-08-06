@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">./js/src/Mic.js</span></h1>
     <h2>
-        Statements: <span class="metric">99.38% <small>(159 / 160)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">94.83% <small>(55 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">99.38% <small>(160 / 161)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">96.51% <small>(83 / 86)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">100% <small>(17 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">99.36% <small>(155 / 156)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">99.36% <small>(156 / 157)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">./js/src/</a> &#187; Mic.js</div>
@@ -420,7 +420,13 @@
 393
 394
 395
-396</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+396
+397
+398
+399
+400
+401
+402</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -486,7 +492,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-yes">5</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5</span>
@@ -515,9 +525,9 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">194</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">197</span>
 <span class="cline-any cline-yes">25</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -563,8 +573,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -614,6 +627,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">20</span>
 <span class="cline-any cline-yes">20</span>
@@ -747,7 +761,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -813,17 +826,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*!                                        
-*  Mic.js 0.0.0      
-*                                          
-*  (c) 65c02                   
-*                                          
-*  MIT license             
-*                                          
-*  https://bitbucket.org/65c02/mic_js               
-*/                                         
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/*!
+*  Mic.js 0.0.0
+*
+*  (c) 65c02
+*
+*  MIT license
+*
+*  https://bitbucket.org/65c02/mic_js
+*/
 &nbsp;
 /*jshint browser: true, bitwise: true, nomen: true, plusplus: true, indent: 4, expr: false, -W030 */
 /*global define*/
@@ -864,11 +876,13 @@ define([
 &nbsp;
     It is called at load time by require.js passing as `config` the config of the module.
     Anyway, you can call it again anytime.
+    It calls `In.configure()` and `Mxr.configure()` internally.
 &nbsp;
     Fields description:
 &nbsp;
     `assert`:
     Optional. The signature is `void assert(boolean, String)`.
+    Replaces the default implementation of `Mic.assert` with your own.
     If you pass `null` then assertions are disabled.
     If you pass `undefined` then the default implementation is used.
 &nbsp;
@@ -879,10 +893,12 @@ define([
     @method configure
     @static
     @param config {Object} the configuration object
+    @throws {Error} if `config` is null or undefined or not an Object
     */
     //We replace the configure copied from Mxr with our own.
     Mic.configure = function (config) {
-        Mic.assert &amp;&amp; Mic.assert(config !== null, "config is null");
+        Mic.assert &amp;&amp; Mic.assert(config, "config is null or undefined");
+        Mic.assert &amp;&amp; Mic.assert(config instanceof Object, "config is not an Object");
 &nbsp;
         if (config.assert) {
             Mic.assert &amp;&amp; Mic.assert(typeof config.assert === "function", "assert is not a function");
@@ -904,14 +920,13 @@ define([
 &nbsp;
     Mic._IS_SEALED = Mic._UTL_PFX + "_isSealed";
     Mic._COVARIANCE_VIOLATION__MSG = "covariance violated";
-    Mic._COUNTERVARIANCE_VIOLATION_MSG = "countervariance violated";
+    Mic._CONTRAVARIANCE_VIOLATION_MSG = "contravariance violated";
     Mic._PRE = "pre";
     Mic._POST = "post";
     Mic._DISABLE_CONTRACTS_CHECKS = false;
 &nbsp;
     var _defaultAssert = function(trueish, message) {
         if (!trueish) {
-            //TODO: add more details about the failure, like stack trace
             throw new Error(message || "Mic.assert violated ...");
         }
     };
@@ -923,6 +938,7 @@ define([
     @static
     @param trueish {boolean} the predicate
     @param [message] {String} the message to pass in the Error
+    @throws {Error} if `trueish` is false
     */
     Mic.assert = _defaultAssert;
 &nbsp;
@@ -957,6 +973,8 @@ define([
     @method seal
     @static
     @param clazz {Function} the class with contract.
+    @throws {Error} if `clazz` is already sealed
+    @throws {Error} if `clazz` contains an abstract method
     */
     Mic.seal = function (clazz) {
         Mic._seal(clazz, false);
@@ -967,15 +985,16 @@ define([
     @method sealAbstract
     @static
     @param clazz {Function} the class with contract.
+    @throws {Error} if `clazz` is already sealed
     */
     Mic.sealAbstract = function (clazz) {
         Mic._seal(clazz, true);
     };
 &nbsp;
     Mic._seal = function (clazz, isAbstractClass) {
-        Mic.assert(clazz);
-        Mic.assert(clazz instanceof Function);
-        Mic.assert(!Mic.isSealed(clazz));
+        Mic.assert &amp;&amp; Mic.assert(clazz, "clazz is null or undefined");
+        Mic.assert &amp;&amp; Mic.assert(clazz instanceof Function, "clazz is not a class, more specifically it is not of type Function.");
+        Mic.assert &amp;&amp; Mic.assert(!Mic.isSealed(clazz), "clazz is already sealed.");
         var cp = clazz.prototype;
         var memberName;
         var member;
@@ -991,7 +1010,7 @@ define([
                             synth = Mic._synthetize(member, conditions);
                             cp[memberName] = synth;
                         } else {
-                            Mic.assert(
+                            Mic.assert &amp;&amp; Mic.assert(
                                 isAbstractClass,
                                 "Found an abstract method on a not abstract class. Class " + clazz.name + " Method " + memberName
                             );
@@ -1008,10 +1027,11 @@ define([
     @method isSealed
     @static
     @param clazz {Function} the class to check.
+    @throws {Error} if `clazz` is null or undefined or not a Function
     */
     Mic.isSealed = function (clazz) {
-        Mic.assert(clazz);
-        Mic.assert(clazz instanceof Function);
+        Mic.assert &amp;&amp; Mic.assert(clazz, "clazz is null or undefined");
+        Mic.assert &amp;&amp; Mic.assert(clazz instanceof Function, "clazz is not a class, more specifically it is not of type Function.");
         return clazz.prototype.hasOwnProperty(Mic._IS_SEALED);
     };
 &nbsp;
@@ -1079,7 +1099,7 @@ define([
             delete member[Mic._POST];
             break;
         }
-        Mic.assert(synth);
+        Mic.assert &amp;&amp; Mic.assert(synth, "Internal error: not able to synthetize a conditions wrapper for member " + member);
         return synth;
     };
 &nbsp;
@@ -1130,16 +1150,15 @@ define([
         }
         if (i === 0) {
             //First precondition passed
-            Mic.assert(!exception);
+            Mic.assert &amp;&amp; Mic.assert(!exception, "Internal error: unexpected state.");
         } else if (i === n) {
             //All the preconditions failed
-            Mic.assert(exception);
+            Mic.assert &amp;&amp; Mic.assert(exception, "Internal error: unexpected state.");
             throw exception;
         } else {
             //After the first preconditions failed some started to pass
             //Covariance violated
             throw new Error(Mic._COVARIANCE_VIOLATION__MSG);
-            //TODO: implement a custom exception with a cause and pass exception as cause
         }
     };
 &nbsp;
@@ -1195,17 +1214,16 @@ define([
         }
         if (i === 0) {
             //case 3 or 4
-            Mic.assert(!exception);
+            Mic.assert &amp;&amp; Mic.assert(!exception, "Internal error: unexpected state.");
         } else if (i === n) {
             //case 1 (!fp) or 2 (fp)
-            Mic.assert(exception);
+            Mic.assert &amp;&amp; Mic.assert(exception, "Internal error: unexpected state.");
             throw exception;
         } else {
             //case 5
-            Mic.assert(fp);
-            Mic.assert(exception);
-            throw new Error(Mic._COUNTERVARIANCE_VIOLATION_MSG);
-            //TODO: implement a custom exception with a cause and pass exception as cause
+            Mic.assert &amp;&amp; Mic.assert(fp, "Internal error: unexpected state.");
+            Mic.assert &amp;&amp; Mic.assert(exception, "Internal error: unexpected state.");
+            throw new Error(Mic._CONTRAVARIANCE_VIOLATION_MSG);
         }
     };
 &nbsp;
@@ -1215,7 +1233,7 @@ define([
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 21 2015 22:24:19 GMT+0200 (ora legale Europa occidentale)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Aug 06 2015 08:30:10 GMT+0200 (ora legale Europa occidentale)</div>
 </div>
 <script src="../../prettify.js"></script>
 <script>

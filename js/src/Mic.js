@@ -1,12 +1,12 @@
-/*!                                        
-*  Mic.js 0.0.0      
-*                                          
-*  (c) 65c02                   
-*                                          
-*  MIT license             
-*                                          
-*  https://bitbucket.org/65c02/mic_js               
-*/                                         
+/*!
+*  Mic.js 0.0.0
+*
+*  (c) 65c02
+*
+*  MIT license
+*
+*  https://bitbucket.org/65c02/mic_js
+*/
 
 /*jshint browser: true, bitwise: true, nomen: true, plusplus: true, indent: 4, expr: false, -W030 */
 /*global define*/
@@ -47,11 +47,13 @@ define([
 
     It is called at load time by require.js passing as `config` the config of the module.
     Anyway, you can call it again anytime.
+    It calls `In.configure()` and `Mxr.configure()` internally.
 
     Fields description:
 
     `assert`:
     Optional. The signature is `void assert(boolean, String)`.
+    Replaces the default implementation of `Mic.assert` with your own.
     If you pass `null` then assertions are disabled.
     If you pass `undefined` then the default implementation is used.
 
@@ -62,10 +64,12 @@ define([
     @method configure
     @static
     @param config {Object} the configuration object
+    @throws {Error} if `config` is null or undefined or not an Object
     */
     //We replace the configure copied from Mxr with our own.
     Mic.configure = function (config) {
-        Mic.assert && Mic.assert(config !== null, "config is null");
+        Mic.assert && Mic.assert(config, "config is null or undefined");
+        Mic.assert && Mic.assert(config instanceof Object, "config is not an Object");
 
         if (config.assert) {
             Mic.assert && Mic.assert(typeof config.assert === "function", "assert is not a function");
@@ -87,14 +91,13 @@ define([
 
     Mic._IS_SEALED = Mic._UTL_PFX + "_isSealed";
     Mic._COVARIANCE_VIOLATION__MSG = "covariance violated";
-    Mic._COUNTERVARIANCE_VIOLATION_MSG = "countervariance violated";
+    Mic._CONTRAVARIANCE_VIOLATION_MSG = "contravariance violated";
     Mic._PRE = "pre";
     Mic._POST = "post";
     Mic._DISABLE_CONTRACTS_CHECKS = false;
 
     var _defaultAssert = function(trueish, message) {
         if (!trueish) {
-            //TODO: add more details about the failure, like stack trace
             throw new Error(message || "Mic.assert violated ...");
         }
     };
@@ -106,6 +109,7 @@ define([
     @static
     @param trueish {boolean} the predicate
     @param [message] {String} the message to pass in the Error
+    @throws {Error} if `trueish` is false
     */
     Mic.assert = _defaultAssert;
 
@@ -140,6 +144,8 @@ define([
     @method seal
     @static
     @param clazz {Function} the class with contract.
+    @throws {Error} if `clazz` is already sealed
+    @throws {Error} if `clazz` contains an abstract method
     */
     Mic.seal = function (clazz) {
         Mic._seal(clazz, false);
@@ -150,15 +156,16 @@ define([
     @method sealAbstract
     @static
     @param clazz {Function} the class with contract.
+    @throws {Error} if `clazz` is already sealed
     */
     Mic.sealAbstract = function (clazz) {
         Mic._seal(clazz, true);
     };
 
     Mic._seal = function (clazz, isAbstractClass) {
-        Mic.assert(clazz);
-        Mic.assert(clazz instanceof Function);
-        Mic.assert(!Mic.isSealed(clazz));
+        Mic.assert && Mic.assert(clazz, "clazz is null or undefined");
+        Mic.assert && Mic.assert(clazz instanceof Function, "clazz is not a class, more specifically it is not of type Function.");
+        Mic.assert && Mic.assert(!Mic.isSealed(clazz), "clazz is already sealed.");
         var cp = clazz.prototype;
         var memberName;
         var member;
@@ -174,7 +181,7 @@ define([
                             synth = Mic._synthetize(member, conditions);
                             cp[memberName] = synth;
                         } else {
-                            Mic.assert(
+                            Mic.assert && Mic.assert(
                                 isAbstractClass,
                                 "Found an abstract method on a not abstract class. Class " + clazz.name + " Method " + memberName
                             );
@@ -191,10 +198,11 @@ define([
     @method isSealed
     @static
     @param clazz {Function} the class to check.
+    @throws {Error} if `clazz` is null or undefined or not a Function
     */
     Mic.isSealed = function (clazz) {
-        Mic.assert(clazz);
-        Mic.assert(clazz instanceof Function);
+        Mic.assert && Mic.assert(clazz, "clazz is null or undefined");
+        Mic.assert && Mic.assert(clazz instanceof Function, "clazz is not a class, more specifically it is not of type Function.");
         return clazz.prototype.hasOwnProperty(Mic._IS_SEALED);
     };
 
@@ -262,7 +270,7 @@ define([
             delete member[Mic._POST];
             break;
         }
-        Mic.assert(synth);
+        Mic.assert && Mic.assert(synth, "Internal error: not able to synthetize a conditions wrapper for member " + member);
         return synth;
     };
 
@@ -313,16 +321,15 @@ define([
         }
         if (i === 0) {
             //First precondition passed
-            Mic.assert(!exception);
+            Mic.assert && Mic.assert(!exception, "Internal error: unexpected state.");
         } else if (i === n) {
             //All the preconditions failed
-            Mic.assert(exception);
+            Mic.assert && Mic.assert(exception, "Internal error: unexpected state.");
             throw exception;
         } else {
             //After the first preconditions failed some started to pass
             //Covariance violated
             throw new Error(Mic._COVARIANCE_VIOLATION__MSG);
-            //TODO: implement a custom exception with a cause and pass exception as cause
         }
     };
 
@@ -378,17 +385,16 @@ define([
         }
         if (i === 0) {
             //case 3 or 4
-            Mic.assert(!exception);
+            Mic.assert && Mic.assert(!exception, "Internal error: unexpected state.");
         } else if (i === n) {
             //case 1 (!fp) or 2 (fp)
-            Mic.assert(exception);
+            Mic.assert && Mic.assert(exception, "Internal error: unexpected state.");
             throw exception;
         } else {
             //case 5
-            Mic.assert(fp);
-            Mic.assert(exception);
-            throw new Error(Mic._COUNTERVARIANCE_VIOLATION_MSG);
-            //TODO: implement a custom exception with a cause and pass exception as cause
+            Mic.assert && Mic.assert(fp, "Internal error: unexpected state.");
+            Mic.assert && Mic.assert(exception, "Internal error: unexpected state.");
+            throw new Error(Mic._CONTRAVARIANCE_VIOLATION_MSG);
         }
     };
 

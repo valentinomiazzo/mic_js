@@ -178,7 +178,7 @@
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_src_Mic.js.html#l102"><code>js\src\Mic.js:102</code></a>
+        <a href="../files/js_src_Mic.js.html#l105"><code>js\src\Mic.js:105</code></a>
         </p>
 
 
@@ -221,6 +221,15 @@
         </div>
 
 
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Error</span>:
+                    <p>if <code>trueish</code> is false</p>
+
+            </div>
+        </div>
 
 </div>
 <div id="method_configure" class="method item">
@@ -261,10 +270,12 @@ It expects a JSON like the following:</p>
 }
 </code></pre>
 <p>It is called at load time by require.js passing as <code>config</code> the config of the module.
-Anyway, you can call it again anytime.</p>
+Anyway, you can call it again anytime.
+It calls <code>In.configure()</code> and <code>Mxr.configure()</code> internally.</p>
 <p>Fields description:</p>
 <p><code>assert</code>:
 Optional. The signature is <code>void assert(boolean, String)</code>.
+Replaces the default implementation of <code>Mic.assert</code> with your own.
 If you pass <code>null</code> then assertions are disabled.
 If you pass <code>undefined</code> then the default implementation is used.</p>
 <p><code>disableContractChecks</code>:
@@ -292,6 +303,15 @@ This is useful when the code is ready for production and speed matters.</p>
         </div>
 
 
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Error</span>:
+                    <p>if <code>config</code> is null or undefined or not an Object</p>
+
+            </div>
+        </div>
 
 </div>
 <div id="method_empty" class="method item">
@@ -310,7 +330,7 @@ This is useful when the code is ready for production and speed matters.</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_src_Mic.js.html#l125"><code>js\src\Mic.js:125</code></a>
+        <a href="../files/js_src_Mic.js.html#l129"><code>js\src\Mic.js:129</code></a>
         </p>
 
 
@@ -351,7 +371,7 @@ This is useful when the code is ready for production and speed matters.</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_src_Mic.js.html#l189"><code>js\src\Mic.js:189</code></a>
+        <a href="../files/js_src_Mic.js.html#l196"><code>js\src\Mic.js:196</code></a>
         </p>
 
 
@@ -382,6 +402,15 @@ This is useful when the code is ready for production and speed matters.</p>
         </div>
 
 
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Error</span>:
+                    <p>if <code>clazz</code> is null or undefined or not a Function</p>
+
+            </div>
+        </div>
 
 </div>
 <div id="method_seal" class="method item">
@@ -406,7 +435,7 @@ This is useful when the code is ready for production and speed matters.</p>
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_src_Mic.js.html#l137"><code>js\src\Mic.js:137</code></a>
+        <a href="../files/js_src_Mic.js.html#l141"><code>js\src\Mic.js:141</code></a>
         </p>
 
 
@@ -438,6 +467,15 @@ Must be called after all the methods, pre-conditions, post-conditions, mixins an
         </div>
 
 
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Error</span>:
+                    <p>if <code>clazz</code> contains an abstract method</p>
+
+            </div>
+        </div>
 
 </div>
 <div id="method_sealAbstract" class="method item">
@@ -462,7 +500,7 @@ Must be called after all the methods, pre-conditions, post-conditions, mixins an
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_src_Mic.js.html#l148"><code>js\src\Mic.js:148</code></a>
+        <a href="../files/js_src_Mic.js.html#l154"><code>js\src\Mic.js:154</code></a>
         </p>
 
 
@@ -493,6 +531,15 @@ Must be called after all the methods, pre-conditions, post-conditions, mixins an
         </div>
 
 
+        <div class="throws">
+            <h4>Throws:</h4>
+
+            <div class="throws-description">
+                        <span class="type">Error</span>:
+                    <p>if <code>clazz</code> is already sealed</p>
+
+            </div>
+        </div>
 
 </div>
 <div id="method_unused" class="method item">
@@ -517,7 +564,7 @@ Must be called after all the methods, pre-conditions, post-conditions, mixins an
     <div class="meta">
                 <p>
                 Defined in
-        <a href="../files/js_src_Mic.js.html#l112"><code>js\src\Mic.js:112</code></a>
+        <a href="../files/js_src_Mic.js.html#l116"><code>js\src\Mic.js:116</code></a>
         </p>
 
 

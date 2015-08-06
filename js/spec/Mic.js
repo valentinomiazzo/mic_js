@@ -1,12 +1,12 @@
-/*!                                        
-*  Mic.js 0.0.0      
-*                                          
-*  (c) 65c02                   
-*                                          
-*  MIT license             
-*                                          
-*  https://bitbucket.org/65c02/mic_js               
-*/                                         
+/*!
+*  Mic.js 0.0.0
+*
+*  (c) 65c02
+*
+*  MIT license
+*
+*  https://bitbucket.org/65c02/mic_js
+*/
 
 /*jshint browser: true, bitwise: true, nomen: true, plusplus: true, indent: 4, expr: false, -W030 */
 /*global define, describe, it, expect */
@@ -311,7 +311,7 @@ define([
             try {
                 expect(v.f(50)).toBe('shouldNotGoHere');
             } catch (e) {
-                expect(e.message).toBe(Mic._COUNTERVARIANCE_VIOLATION_MSG);
+                expect(e.message).toBe(Mic._CONTRAVARIANCE_VIOLATION_MSG);
             }
         });
 

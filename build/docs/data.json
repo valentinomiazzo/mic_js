@@ -36,7 +36,7 @@
         {
             "file": "js\\src\\Mic.js",
             "line": 39,
-            "description": "Configures the library.\nIt expects a JSON like the following:\n\n    {\n        \"assert\" : callback,\n        \"disableContractChecks\": boolean\n    }\n\nIt is called at load time by require.js passing as `config` the config of the module.\nAnyway, you can call it again anytime.\n\nFields description:\n\n`assert`:\nOptional. The signature is `void assert(boolean, String)`.\nIf you pass `null` then assertions are disabled.\nIf you pass `undefined` then the default implementation is used.\n\n`disableContractChecks`:\nOptional. If true then pre and post conditions are not injected and therefore checked.\nThis is useful when the code is ready for production and speed matters.",
+            "description": "Configures the library.\nIt expects a JSON like the following:\n\n    {\n        \"assert\" : callback,\n        \"disableContractChecks\": boolean\n    }\n\nIt is called at load time by require.js passing as `config` the config of the module.\nAnyway, you can call it again anytime.\nIt calls `In.configure()` and `Mxr.configure()` internally.\n\nFields description:\n\n`assert`:\nOptional. The signature is `void assert(boolean, String)`.\nReplaces the default implementation of `Mic.assert` with your own.\nIf you pass `null` then assertions are disabled.\nIf you pass `undefined` then the default implementation is used.\n\n`disableContractChecks`:\nOptional. If true then pre and post conditions are not injected and therefore checked.\nThis is useful when the code is ready for production and speed matters.",
             "itemtype": "method",
             "name": "configure",
             "static": 1,
@@ -47,11 +47,15 @@
                     "type": "Object"
                 }
             ],
+            "throws": {
+                "description": "if `config` is null or undefined or not an Object",
+                "type": "Error"
+            },
             "class": "Mic"
         },
         {
             "file": "js\\src\\Mic.js",
-            "line": 102,
+            "line": 105,
             "description": "If `trueish` is not true then it throws an Error.",
             "itemtype": "method",
             "name": "assert",
@@ -69,11 +73,15 @@
                     "optional": true
                 }
             ],
+            "throws": {
+                "description": "if `trueish` is false",
+                "type": "Error"
+            },
             "class": "Mic"
         },
         {
             "file": "js\\src\\Mic.js",
-            "line": 112,
+            "line": 116,
             "description": "Declares you don't use variable and shuts up Jslint & Co.\n\n    function f(x, y) {\n        Mic.unused(x & y);\n    }",
             "itemtype": "method",
             "name": "unused",
@@ -89,7 +97,7 @@
         },
         {
             "file": "js\\src\\Mic.js",
-            "line": 125,
+            "line": 129,
             "description": "Declares a block is empty by purpose and shuts up Jslint & Co.\n\n    {\n        Mic.empty();\n    }",
             "itemtype": "method",
             "name": "empty",
@@ -98,7 +106,7 @@
         },
         {
             "file": "js\\src\\Mic.js",
-            "line": 137,
+            "line": 141,
             "description": "Seals the contract of `clazz`.\nMust be called after all the methods, pre-conditions, post-conditions, mixins and inheritance have been declared.",
             "itemtype": "method",
             "name": "seal",
@@ -110,11 +118,15 @@
                     "type": "Function"
                 }
             ],
+            "throws": {
+                "description": "if `clazz` contains an abstract method",
+                "type": "Error"
+            },
             "class": "Mic"
         },
         {
             "file": "js\\src\\Mic.js",
-            "line": 148,
+            "line": 154,
             "description": "Like `seal` but it doesn't throw an Error if the class contains abstract methods.",
             "itemtype": "method",
             "name": "sealAbstract",
@@ -126,11 +138,15 @@
                     "type": "Function"
                 }
             ],
+            "throws": {
+                "description": "if `clazz` is already sealed",
+                "type": "Error"
+            },
             "class": "Mic"
         },
         {
             "file": "js\\src\\Mic.js",
-            "line": 189,
+            "line": 196,
             "description": "Return true if `seal` or `sealAbstract` have been invoked on `clazz`.",
             "itemtype": "method",
             "name": "isSealed",
@@ -142,6 +158,10 @@
                     "type": "Function"
                 }
             ],
+            "throws": {
+                "description": "if `clazz` is null or undefined or not a Function",
+                "type": "Error"
+            },
             "class": "Mic"
         }
     ],
