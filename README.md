@@ -13,7 +13,7 @@ Computable.prototype.compute = Mic.anAbstract();
 
 // Now, let's define pre-conditions and post-condition for our method.
 
-// The pre-condition takes the same parameters of the methos.
+// The pre-condition takes the same parameters of the method.
 // In this case the pre-condition asserts that the passed parameter must be a number.
 Computable.prototype.compute.pre = function (x) {
     Mic.assert(typeof x === "number");
@@ -29,8 +29,8 @@ Computable.prototype.compute.post = function (result, x) {
 };
 
 // After defining all the pre and post conditions we have to seal the contract.
-// This is where the library does its magic injecting code.
-Mic.sealAbstract(Computable);
+// This is where the library does its magic by injecting code.
+Mic.sealAsAbstract(Computable);
 
 // Now, another developer implements the interface
 

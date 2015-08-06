@@ -153,12 +153,12 @@ define([
 
     /**
     Like `seal` but it doesn't throw an Error if the class contains abstract methods.
-    @method sealAbstract
+    @method sealAsAbstract
     @static
     @param clazz {Function} the class with contract.
     @throws {Error} if `clazz` is already sealed
     */
-    Mic.sealAbstract = function (clazz) {
+    Mic.sealAsAbstract = function (clazz) {
         Mic._seal(clazz, true);
     };
 
@@ -194,7 +194,7 @@ define([
     };
 
     /**
-    Return true if `seal` or `sealAbstract` have been invoked on `clazz`.
+    Return true if `seal` or `sealAsAbstract` have been invoked on `clazz`.
     @method isSealed
     @static
     @param clazz {Function} the class to check.

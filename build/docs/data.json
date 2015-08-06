@@ -129,7 +129,7 @@
             "line": 154,
             "description": "Like `seal` but it doesn't throw an Error if the class contains abstract methods.",
             "itemtype": "method",
-            "name": "sealAbstract",
+            "name": "sealAsAbstract",
             "static": 1,
             "params": [
                 {
@@ -147,7 +147,7 @@
         {
             "file": "js\\src\\Mic.js",
             "line": 196,
-            "description": "Return true if `seal` or `sealAbstract` have been invoked on `clazz`.",
+            "description": "Return true if `seal` or `sealAsAbstract` have been invoked on `clazz`.",
             "itemtype": "method",
             "name": "isSealed",
             "static": 1,

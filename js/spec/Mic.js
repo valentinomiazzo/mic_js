@@ -53,10 +53,10 @@ define([
             expect(i.k.bind(i, null)).toThrow();
         });
 
-        it("doesn't throw an Error when calling 'sealAbstract' on a class with abstract methods", function() {
+        it("doesn't throw an Error when calling 'sealAsAbstract' on a class with abstract methods", function() {
             function P() { Mic.empty(); }
             P.prototype.p = Mic.anAbstract();
-            expect(Mic.sealAbstract.bind(null, P)).not.toThrow();
+            expect(Mic.sealAsAbstract.bind(null, P)).not.toThrow();
         });
 
         it("throws an Error when calling 'seal' on a class with abstract methods", function() {
