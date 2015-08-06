@@ -1,6 +1,6 @@
 # Mic.js #
 
-`Mic.js` (from _M_ ixins _I_ nerithance _C_ ontracts) is a library that provides a form of [Design By Contract](https://en.wikipedia.org/wiki/Design_by_contract). It extends [`Mxr.js`](https://github.com/valentinomiazzo/mxr_js) and [`In.js`](https://github.com/valentinomiazzo/in_js) providing easy access to inheritance and mixin concepts.
+`Mic.js` (from _M_ ixins _I_ nerithance _C_ ontracts) is a library that provides a form of [Design By Contract](https://en.wikipedia.org/wiki/Design_by_contract). It extends [`Mxr.js`](https://github.com/valentinomiazzo/mxr_js) and [`In.js`](https://github.com/valentinomiazzo/in_js) providing easy access to inheritance and mixin concepts. `Mic.js` is under MIT license.
 
 ## Example ##
 
@@ -52,6 +52,22 @@ len.compute(-1);      // Returns an exception that shows a violation of the post
                       // This is useful to the 2nd developer. It clarifies how to implement the interface.
 ```
 
+## What problem solves? ##
+
+Javascript is a scripting language, it was not designed for large code bases. Nevertheless every conceivable API is making its way in browsers making them the perfect playground for new generations. Node.js  has broken the wall and made possible to use Javascript outside browsers. As Atwood's Law says 'any application that can be written in JavaScript will eventually be written in JavaScript'.
+
+`Mic.js` tries to address the problem of the large scale Javascript programming by introducing the Design by Contract in the toolbox of the developer.
+
+`Mic.js` allows to attach pre and post conditions to instance methods of a class. These pre and post conditions are checked at runtime when the method is invoked.
+
+With this simple mechanism the developer can properly communicate the contract bound to a method. For example, by checking the type of each parameter it is possible to define the signature of a method.
+
+But there is more. Contracts aren't declarative, they're imperative. In other words pre and post conditions contains code. Complex constraints can be implemented like those around variadic methods.
+
+`Mic.js` is very helpful when writing frameworks. We can attach pre and post conditions to abstract methods, in other words we can enforce a contract on a interface. The contract is inherited by the classes implementing the interface and, thanks to mix-ins, a class can implement multiple interfaces. This is really powerful.
+
+`Mic.js` watches your back doing some checks under the hoods. For example it warns when you try to instantiate a class with abstract methods or when it finds that you are violating the covariance and contravariance rules.
+
 ## Docs and examples ##
 
 Docs are available [here](build/docs/classes/Mic.html). Anyway, since it extends `In.js` and `Mxr.js`, you may want to read [here](https://rawgit.com/valentinomiazzo/in_js/master/build/docs/classes/In.html) and [here](https://rawgit.com/valentinomiazzo/mxr_js/master/build/docs/classes/Mxr.html).
@@ -93,6 +109,26 @@ As examples you can use the [spec](js/spec/Mic.js) file used for unit testing. [
             //your code
         };
         ```
+    * If you use [Karma](http://karma-runner.github.io/) for testing then don't forget to load the lib files
+    ```javascript
+    config.set({
+        basePath: '',
+
+        files: [{
+            pattern: 'bower_components/in_js/js/src/In.js',
+            included: false
+        }, {
+            pattern: 'bower_components/mxr_js/js/src/Mxr.js',
+            included: false
+        }, {
+            pattern: 'bower_components/mic_js/js/src/Mic.js',
+            included: false
+        },
+        ... ],
+
+        ...
+    });
+    ```
 * How to modify the lib, run tests, etc...
     * Prerequisites
         * install [Node.js](http://nodejs.org/)
@@ -117,22 +153,6 @@ As examples you can use the [spec](js/spec/Mic.js) file used for unit testing. [
     * go [here](../../pulls)
 * For issues
     * go [here](../../issues)
-
-## What problem solves? ##
-
-Javascript is a scripting language, it was not designed for large code bases. Nevertheless every conceivable API is making its way in browsers making them the perfect playground for new generations. Node.js  has broken the wall and made possible to use Javascript outside browsers. As Atwood's Law says 'any application that can be written in JavaScript will eventually be written in JavaScript'.
-
-`Mic.js` tries to address the problem of the large scale Javascript programming by introducing the Design by Contract in the toolbox of the developer.
-
-`Mic.js` allows to attach pre and post conditions to instance methods (not static) of a class. These pre and post conditions are checked at runtime when the method is invoked.
-
-With this simple mechanism the developer can properly communicate the contract bound to a method. For example, by checking the type of each parameter it is possible to define the signature of a method.
-
-But there is more. Contracts aren't declarative, they're imperative. In other words pre and post conditions contains code. Complex constraints can be implemented like those around variadic methods.
-
-`Mic.js` is very helpful when writing frameworks. We can attach pre and post conditions to abstract methods, in other words we can enforce a contract on a interface. The contract is inherited by the classes implementing the interface and, thanks to mix-ins, a class can implement multiple interfaces. This is really powerful.
-
-`Mic.js` watches your back doing some checks under the hoods. For example it warns when you try to instantiate a class with abstract methods or when it finds that you are violating the covariance and contravariance rules.
 
 ## Limitations ##
 
