@@ -1,11 +1,11 @@
 /*!
-*  Mic.js 0.0.0
+*  Mic.js 0.1.0
 *
-*  (c) 65c02
+*  (c) valentino miazzo
 *
 *  MIT license
 *
-*  https://bitbucket.org/65c02/mic_js
+*  https://github.com/valentinomiazzo/mic_js
 */
 
 /*jshint browser: true, bitwise: true, nomen: true, plusplus: true, indent: 4, expr: false, -W030 */

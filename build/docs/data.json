@@ -2,7 +2,7 @@
     "project": {
         "name": "Mic.js",
         "description": "Design By Contract for Javascript",
-        "version": "0.0.0",
+        "version": "0.1.0",
         "url": ""
     },
     "files": {

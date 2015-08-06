@@ -1,14 +1,14 @@
 {
     "name": "Mic.js",
     "description": "Design By Contract for Javascript",
-    "version": "0.0.0",
-    "authors": "65c02",
+    "version": "0.1.0",
+    "authors": "valentino miazzo",
     "main": "js/src/Mic.js",
     "private": true,
     "license": [
         {
             "type": "MIT license",
-            "url": "https://bitbucket.org/65c02/mic_js"
+            "url": "https://github.com/valentinomiazzo/mic_js"
         }
     ],
     "dependencies": {

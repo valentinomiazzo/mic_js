@@ -1,24 +1,24 @@
 {
   "name": "Mic.js",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Design By Contract for Javascript",
   "licenses": [
     {
       "type": "MIT license",
-      "url": "https://bitbucket.org/65c02/mic_js"
+      "url": "https://github.com/valentinomiazzo/mic_js"
     }
   ],
-  "author": "65c02",
+  "author": "valentino miazzo",
   "contributors": [],
   "private": true,
   "preferGlobal": false,
   "main": "js/src/Mic.js",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/65c02/mic_js"
+    "url": "https://github.com/valentinomiazzo/mic_js"
   },
   "bugs": {
-    "url": "https://bitbucket.org/65c02/mic_js/issues"
+    "url": "https://github.com/valentinomiazzo/mic_js/issues"
   },
   "publishConfig": {},
   "keywords": [
