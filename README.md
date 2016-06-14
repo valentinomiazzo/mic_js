@@ -131,8 +131,8 @@ As examples you can use the [spec](js/spec/Mic.js) file used for unit testing. [
     ```
 * How to modify the lib, run tests, etc...
     * Prerequisites
-        * install [Node.js](http://nodejs.org/)
-        * install [Npm](https://www.npmjs.com/)
+        * install [Node.js](http://nodejs.org/) (tested with 0.10.31 and 6.2.1)
+        * install [Npm](https://www.npmjs.com/) (tested with 2.8.3 and 3.9.5)
         * `npm install grunt-cli -g`
     * Install
         * clone this repository
