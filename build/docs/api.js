@@ -4,6 +4,7 @@ YUI.add("yuidoc-meta", function(Y) {
         "Mic"
     ],
     "modules": [],
-    "allModules": []
+    "allModules": [],
+    "elements": []
 } };
 });

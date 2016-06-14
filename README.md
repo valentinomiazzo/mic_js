@@ -71,7 +71,7 @@ But there is more. Contracts aren't declarative, they're imperative. In other wo
 ## Docs and examples ##
 
 Docs are available [here](https://rawgit.com/valentinomiazzo/mic_js/master/build/docs/classes/Mic.html). Anyway, since it extends `In.js` and `Mxr.js`, you may want to read [here](https://rawgit.com/valentinomiazzo/in_js/master/build/docs/classes/In.html) and [here](https://rawgit.com/valentinomiazzo/mxr_js/master/build/docs/classes/Mxr.html).
-As examples you can use the [spec](js/spec/Mic.js) file used for unit testing. [Coverage reports](https://rawgit.com/valentinomiazzo/mic_js/master/build/coverage/PhantomJS%201.9.8%20(Windows%207%200.0.0)/js/src/Mic.js.html) are available too.
+As examples you can use the [spec](js/spec/Mic.js) file used for unit testing. [Coverage reports](https://rawgit.com/valentinomiazzo/mic_js/master/build/coverage/PhantomJS%202.1.1%20(Windows%208%200.0.0)/src/Mic.js.html) are available too.
 
 ## How do I get set up? ##
 

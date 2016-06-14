@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "authors": "valentino miazzo",
     "main": "js/src/Mic.js",
-    "private": true,
+    "private": false,
     "license": [
         {
             "type": "MIT license",

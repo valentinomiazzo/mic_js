@@ -32,6 +32,7 @@
             "static": 1
         }
     },
+    "elements": {},
     "classitems": [
         {
             "file": "js\\src\\Mic.js",
