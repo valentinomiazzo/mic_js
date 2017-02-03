@@ -134,6 +134,7 @@ As examples you can use the [spec](js/spec/Mic.js) file used for unit testing. [
         * install [Node.js](http://nodejs.org/) (tested with 0.10.31, 4.2.6 and 6.2.1)
         * install [Npm](https://www.npmjs.com/) (tested with 2.8.3, 3.5.2 and 3.9.5)
         * `npm install grunt-cli -g`
+        * `npm install bower -g`
     * Install
         * clone this repository
         * in the root of the cloned repo, type (on Windows you may need to disable antivirus if you get strange issues during the install):
